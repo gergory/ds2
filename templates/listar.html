@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Noticia</title>
+	<link rel="stylesheet" type="text/css" href="./../static/estilo.css">
+	<script type="text/javascript" src="./../static/script.js"></script>
+</head>
+<body onload="utilizaAdBlock()">
+	
+	<h1> NoticiaKEEP </h1>
+
+	{% if nome %}
+  		<h1>{{ nome }}</h1>
+	{% else %}
+  		<h1>Sem titulo..</h1>
+	{% endif %}
+
+	
+	
+	<table  border="1">
+
+		{% for a in vetNoticia %}
+        <tr> 
+			<td> 
+				<a href="/excluir/{{a.id}}"> Excluir </a> 
+			</td> 
+
+			<td> 
+				<a href="/enviar_lixeira/{{a.id}}"> Mandar para Lixeira? </a> 
+			</td>
+			<td> 
+				<a href="/replicar/{{a.id}}"> replicar </a> 
+			</td> 
+
+			<td> 
+				<a href="/tela_alterar/{{a.id}}"> Alterar </a> 
+			</td> 
+
+			<td> 
+				{{a.titulo}}
+			</td> 
+			<td> 
+				{{a.descricao}}
+			</td> 			
+		</tr>
+    	{% endfor %}
+
+	</table>
+
+		<a href="/tela_adicionar"> Adicionar </a>
+
+
+	<hr>
+
+	<h2> Lixeira </h2>
+
+
+	<img src="http://www.superdownloads.com.br/imagens/screenshots/9/3/93058,O.png" width="100px" height="100px">
+
+	
+
+	<table  border="1">
+
+		{% for a in vetNoticiaLixeira %}
+        <tr> 
+			<td> 
+				<a href="/excluir/{{a.id}}"> Excluir </a> 
+			</td> 
+
+			<td> 
+				<a href="/restaurar_lixeira/{{a.id}}"> Restaurar? </a> 
+			</td> 
+
+			<td> 
+				{{a.titulo}}
+			</td> 
+			<td> 
+				{{a.descricao}}
+			</td> 			
+		</tr>
+    	{% endfor %}
+
+	</table>
+
+</body>
+</html>
